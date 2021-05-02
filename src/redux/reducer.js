@@ -1,6 +1,8 @@
+import { Data } from '../Data/index';
+
 const init = {
-  friendList: [],
-  newId: 0,
+  friendList: Data,
+  newId: 5,
 };
 
 export default function Reducer(state = init, { type, payload }) {
