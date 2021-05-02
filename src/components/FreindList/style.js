@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   max-width: 800px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
 
   @media (max-width: 800px) {
     padding: 0 20px;
@@ -12,13 +12,16 @@ export const Wrapper = styled.div`
 
   .header {
     background: #f7f7f7;
+    h1 {
+      margin: 20px auto;
+    }
   }
 
   .input-container {
     display: flex;
     align-items: center;
     margin-top: auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     .add-btn {
       height: 50px;
       width: 90px;
@@ -29,7 +32,7 @@ export const Wrapper = styled.div`
 
   .search-box,
   .input-box {
-    height: 60px;
+    height: 55px;
     width: 100%;
     border: 0;
     border-bottom: 1px solid #4a4a48;
@@ -46,7 +49,7 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     margin-left: auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     .check-box {
       height: 20px;
       width: 20px;
@@ -60,7 +63,7 @@ export const Wrapper = styled.div`
   .friend-box {
     display: flex;
     align-items: center;
-    height: 80px;
+    height: 58px;
     width: 100%;
     border-bottom: 1px solid #82827e;
     h3 {
@@ -68,7 +71,7 @@ export const Wrapper = styled.div`
       margin-left: 20px;
     }
     .btn {
-      padding: 10px;
+      padding: 7px;
       background: #fff;
       border: 1px solid #e6e6e1;
       cursor: pointer;
@@ -84,7 +87,7 @@ export const Wrapper = styled.div`
   }
 
   .pagination-container {
-    padding: 30px;
+    padding: 20px;
     .page-btn {
       padding: 8px 10px;
       cursor: pointer;

@@ -118,7 +118,7 @@ function Index({
             <Icon
               style={{ color: friend.isFav ? 'yellow' : '#f2f2f0' }}
               icon={friend.isFav ? starFull : starEmpty}
-              size={25}
+              size={22}
             />
           </button>
           <button
@@ -127,7 +127,7 @@ function Index({
             }}
             className='btn del-btn'
           >
-            <Icon icon={ic_delete} size={25} />
+            <Icon icon={ic_delete} size={20} />
           </button>
         </div>
       ))}
