@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
     padding: 0 20px;
   }
 
+  @media (max-width: 500px) {
+    min-height: 80vh;
+  }
+
   .header {
     background: #f7f7f7;
     h1 {

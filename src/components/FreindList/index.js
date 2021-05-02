@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Wrapper } from './style';
 import { connect } from 'react-redux';
 
-import Icon from 'react-icons-kit';
-import { starEmpty } from 'react-icons-kit/icomoon/starEmpty';
-import { starFull } from 'react-icons-kit/icomoon/starFull';
-import { ic_delete } from 'react-icons-kit/md/ic_delete';
-
 import {
   addNewFriend,
   deleteFriend,
   makeFavouriteFriend,
   makeUnFavouriteFriend,
 } from '../../redux/action';
+
+import Pagination from '../Pagination';
+import ListComponent from '../ListComponent';
 
 const limit = 4;
 
@@ -70,6 +68,10 @@ function Index({
     } else alert('Enter name');
   };
 
+  const onEnter = (e) => {
+    if (e.key === 'Enter') handleAdd();
+  };
+
   const handleCheckBox = (e) => {
     setSortByFav(e.target.checked);
     if (e.target.checked) setCurFriendList(getSortedList(curFriendList));
@@ -112,45 +114,24 @@ function Index({
       </div>
 
       {paginatedFriendList.map((friend) => (
-        <div className='friend-box' key={friend.id}>
-          <h3>{friend.name}</h3>
-          <button onClick={() => handleFavourite(friend)} className='btn fav-btn'>
-            <Icon
-              style={{ color: friend.isFav ? 'yellow' : '#f2f2f0' }}
-              icon={friend.isFav ? starFull : starEmpty}
-              size={22}
-            />
-          </button>
-          <button
-            onClick={() => {
-              if (window.confirm('Are you sure?')) deleteFriend(friend.id);
-            }}
-            className='btn del-btn'
-          >
-            <Icon icon={ic_delete} size={20} />
-          </button>
-        </div>
+        <ListComponent
+          friend={friend}
+          handleFavourite={handleFavourite}
+          deleteFriend={deleteFriend}
+        />
       ))}
 
-      <div className='pagination-container'>
-        {offSet > 0 && (
-          <button onClick={() => setOffset((prevState) => prevState - limit)} className='page-btn'>
-            {offSet / limit}
-          </button>
-        )}
-        {(offSet > 0 || offSet + limit < curFriendList.length) && (
-          <button className='page-btn cur-page'>{offSet / limit + 1}</button>
-        )}
-        {offSet + limit < curFriendList.length && (
-          <button onClick={() => setOffset((prevState) => prevState + limit)} className='page-btn'>
-            {offSet / limit + 2}
-          </button>
-        )}
-      </div>
+      <Pagination
+        limit={limit}
+        listLength={curFriendList.length}
+        offSet={offSet}
+        setOffset={setOffset}
+      />
 
       <div className='input-container'>
         <input
           onChange={handleChange}
+          onKeyPress={onEnter}
           value={friendName}
           className='input-box'
           placeholder='Add New Friend'
